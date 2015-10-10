@@ -5,7 +5,7 @@
            fetch="https://android.googlesource.com/" />
   <remote  name="x86"
            fetch="https://github.com/pstglia" />
-  <default revision="refs/tags/android-5.1.1_r1"
+  <default revision="refs/tags/android-5.1.1_r24"
            remote="aosp"
            sync-c="true"
            sync-j="1" />
@@ -23,7 +23,9 @@
   <project path="device/generic/x86_64" name="device-generic-x86_64" groups="pdk" remote="x86" revision="lollipop-x86_fork" />
   <project path="external/alsa-lib" name="external-alsa-lib" remote="x86" revision="lollipop-x86_fork" />
   <project path="external/alsa-utils" name="external-alsa-utils" remote="x86" revision="lollipop-x86_fork" />
-  <project path="external/bluetooth/bluedroid" name="platform-external-bluetooth-bluedroid" groups="pdk" remote="x86" revision="lollipop-x86_fork" />
+  <project path="external/bluetooth/bluez" name="platform/external/bluetooth/bluez" remote="x86" revision="lollipop-x86_fork" />
+  <project path="external/bluetooth/glib" name="platform/external/bluetooth/glib" remote="x86" revision="lollipop-x86_fork" />
+  <project path="external/bluetooth/sbc" name="platform/external/bluetooth/sbc" remote="x86" revision="lollipop-x86_fork" />
   <project path="external/busybox" name="external-busybox" remote="x86" revision="lollipop-x86_fork" />
   <project path="external/drm" name="external-drm" remote="x86" revision="lollipop-x86_fork" />
   <project path="external/e2fsprogs" name="external-e2fsprogs" groups="pdk" remote="x86" revision="lollipop-x86_fork" />
@@ -34,6 +36,7 @@
   <project path="external/koush/Widgets" name="external-koush-Widgets" remote="x86" revision="lollipop-x86_fork" />
   <project path="external/libpciaccess" name="external-libpciaccess" remote="x86" revision="lollipop-x86_fork" />
   <project path="external/libtruezip" name="external-libtruezip" remote="x86" revision="lollipop-x86_fork" />
+  <project path="external/llvm" name="platform/external/llvm" groups="pdk" remote="x86" revision="lollipop-x86_fork" />
   <project path="external/mesa" name="external-mesa" remote="x86" revision="lollipop-x86_fork" />
   <project path="external/ntfs-3g" name="external-ntfs-3g" remote="x86" revision="lollipop-x86_fork" />
   <project path="external/parted" name="external-parted" remote="x86" revision="lollipop-x86_fork" />
@@ -43,7 +46,6 @@
   <project path="frameworks/av" name="frameworks-av" groups="pdk" remote="x86" revision="lollipop-x86_fork" />
   <project path="frameworks/base" name="platform_frameworks_base" groups="pdk-cw-fs" remote="x86" revision="lollipop-x86_fork" />
   <project path="frameworks/native" name="frameworks-native" groups="pdk" remote="x86" revision="lollipop-x86_fork" />
-  <project path="hardware/broadcom/libbt" name="hardware-broadcom-libbt" groups="pdk" remote="x86" revision="lollipop-x86_fork" />
   <project path="hardware/drm_gralloc" name="drm_gralloc" remote="x86" revision="lollipop-x86_fork" />
   <project path="hardware/gps" name="hardware-gps" remote="x86" revision="lollipop-x86_fork" />
   <project path="hardware/intel/hwcomposer" name="hardware-intel-hwcomposer" remote="x86" revision="lollipop-x86_fork" />
@@ -59,11 +61,9 @@
   <project path="packages/apps/CMFileManager" name="packages-apps-CMFileManager" remote="x86" revision="lollipop-x86_fork" />
   <project path="packages/apps/Settings" name="platform_packages_apps_settings" remote="x86" revision="lollipop-x86_fork" />
   <project path="packages/apps/TSCalibration2" name="packages-apps-TSCalibration2" remote="x86" revision="lollipop-x86_fork" />
-  <project path="packages/apps/Trebuchet" name="android_packages_apps_Trebuchet" remote="x86" revision="lollipop-x86_fork" />
   <project path="system/core" name="system-core" groups="pdk" remote="x86" revision="lollipop-x86_fork" />
   <project path="system/extras" name="system-extras" groups="pdk" remote="x86" revision="lollipop-x86_fork" />
   <project path="system/vold" name="system-vold" groups="pdk" remote="x86" revision="lollipop-x86_fork" />
-  <project path="vendor/intel/houdini" name="vendor-intel-houdini" remote="x86" revision="lollipop-x86_fork" />
 
   <!-- from original Android repositories -->
   <project path="abi/cpp" name="platform/abi/cpp" groups="pdk" />
@@ -119,6 +119,7 @@
   <project path="external/arduino" name="platform/external/arduino" groups="pdk-cw-fs" />
   <project path="external/bison" name="platform/external/bison" groups="pdk" />
   <project path="external/blktrace" name="platform/external/blktrace" groups="pdk-cw-fs" />
+  <project path="external/bluetooth/bluedroid" name="platform/external/bluetooth/bluedroid" groups="notdefault,pdk" />
   <project path="external/bouncycastle" name="platform/external/bouncycastle" groups="pdk" />
   <project path="external/bsdiff" name="platform/external/bsdiff" groups="pdk" />
   <project path="external/bzip2" name="platform/external/bzip2" groups="pdk" />
@@ -254,7 +255,6 @@
   <project path="external/linux-tools-perf" name="platform/external/linux-tools-perf" groups="pdk-cw-fs" />
   <project path="external/littlemock" name="platform/external/littlemock" groups="pdk-cw-fs" />
   <project path="external/lldb" name="platform/external/lldb" groups="pdk-cw-fs" />
-  <project path="external/llvm" name="platform/external/llvm" groups="pdk" />
   <project path="external/lohit-fonts" name="platform/external/lohit-fonts" />
   <project path="external/ltrace" name="platform/external/ltrace" groups="pdk-cw-fs" />
   <project path="external/lzma" name="platform/external/lzma" groups="pdk" />
@@ -364,8 +364,9 @@
   <project path="frameworks/volley" name="platform/frameworks/volley" groups="pdk-cw-fs" />
   <project path="frameworks/webview" name="platform/frameworks/webview" groups="pdk-cw-fs" />
   <project path="frameworks/wilhelm" name="platform/frameworks/wilhelm" groups="pdk-cw-fs" />
-  <project path="hardware/akm" name="platform/hardware/akm" />
-  <project path="hardware/broadcom/wlan" name="platform/hardware/broadcom/wlan" groups="broadcom_wlan" />
+  <project path="hardware/akm" name="platform/hardware/akm" groups="notdefault" />
+  <project path="hardware/broadcom/libbt" name="platform/hardware/broadcom/libbt" groups="notdefault,pdk" />
+  <project path="hardware/broadcom/wlan" name="platform/hardware/broadcom/wlan" groups="notdefault,broadcom_wlan" />
   <project path="hardware/intel/audio_media" name="platform/hardware/intel/audio_media" groups="intel" />
   <project path="hardware/intel/bootstub" name="platform/hardware/intel/bootstub" groups="intel" />
   <project path="hardware/intel/common/bd_prov" name="platform/hardware/intel/common/bd_prov" groups="intel" />
@@ -505,7 +506,7 @@
   <project path="prebuilts/gcc/darwin-x86/mips/mipsel-linux-android-4.8" name="platform/prebuilts/gcc/darwin-x86/mips/mipsel-linux-android-4.8" groups="notdefault,pdk,darwin,mips" />
   <project path="prebuilts/gcc/darwin-x86/mips/mips64el-linux-android-4.8" name="platform/prebuilts/gcc/darwin-x86/mips/mips64el-linux-android-4.8" groups="notdefault,pdk,darwin,mips" />
   <project path="prebuilts/gcc/darwin-x86/x86/x86_64-linux-android-4.8" name="platform/prebuilts/gcc/darwin-x86/x86/x86_64-linux-android-4.8" groups="notdefault,pdk,darwin,x86" />
-  <project path="prebuilts/gcc/darwin-x86/x86/x86_64-linux-android-4.9" name="platform/prebuilts/gcc/darwin-x86/x86/x86_64-linux-android-4.9" revision="master" groups="pdk,darwin,x86" />
+  <project path="prebuilts/gcc/darwin-x86/x86/x86_64-linux-android-4.9" name="platform/prebuilts/gcc/darwin-x86/x86/x86_64-linux-android-4.9" groups="pdk,darwin,x86" />
   <project path="prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.8" name="platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.8" groups="notdefault,pdk,linux,arm" />
   <project path="prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9" name="platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9" groups="notdefault,pdk,linux,arm" />
   <project path="prebuilts/gcc/linux-x86/arm/arm-eabi-4.8" name="platform/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8" groups="notdefault,pdk,linux,arm" />
