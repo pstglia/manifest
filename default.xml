@@ -23,9 +23,9 @@
   <project path="device/generic/x86_64" name="device-generic-x86_64" groups="pdk" remote="x86" revision="lollipop-x86_fork" />
   <project path="external/alsa-lib" name="external-alsa-lib" remote="x86" revision="lollipop-x86_fork" />
   <project path="external/alsa-utils" name="external-alsa-utils" remote="x86" revision="lollipop-x86_fork" />
-  <project path="external/bluetooth/bluez" name="platform/external/bluetooth/bluez" remote="x86" revision="lollipop-x86_fork" />
-  <project path="external/bluetooth/glib" name="platform/external/bluetooth/glib" remote="x86" revision="lollipop-x86_fork" />
-  <project path="external/bluetooth/sbc" name="platform/external/bluetooth/sbc" remote="x86" revision="lollipop-x86_fork" />
+  <project path="external/bluetooth/bluez" name="platform-external-bluetooth-bluez" remote="x86" revision="lollipop-x86_fork" />
+  <project path="external/bluetooth/glib" name="platform-external-bluetooth-glib" remote="x86" revision="lollipop-x86_fork" />
+  <project path="external/bluetooth/sbc" name="platform-external-bluetooth-sbc" remote="x86" revision="lollipop-x86_fork" />
   <project path="external/busybox" name="external-busybox" remote="x86" revision="lollipop-x86_fork" />
   <project path="external/drm" name="external-drm" remote="x86" revision="lollipop-x86_fork" />
   <project path="external/e2fsprogs" name="external-e2fsprogs" groups="pdk" remote="x86" revision="lollipop-x86_fork" />
@@ -36,7 +36,7 @@
   <project path="external/koush/Widgets" name="external-koush-Widgets" remote="x86" revision="lollipop-x86_fork" />
   <project path="external/libpciaccess" name="external-libpciaccess" remote="x86" revision="lollipop-x86_fork" />
   <project path="external/libtruezip" name="external-libtruezip" remote="x86" revision="lollipop-x86_fork" />
-  <project path="external/llvm" name="platform/external/llvm" groups="pdk" remote="x86" revision="lollipop-x86_fork" />
+  <project path="external/llvm" name="platform_external_llvm" groups="pdk" remote="x86" revision="lollipop-x86_fork" />
   <project path="external/mesa" name="external-mesa" remote="x86" revision="lollipop-x86_fork" />
   <project path="external/ntfs-3g" name="external-ntfs-3g" remote="x86" revision="lollipop-x86_fork" />
   <project path="external/parted" name="external-parted" remote="x86" revision="lollipop-x86_fork" />
