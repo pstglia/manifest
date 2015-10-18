@@ -1,6 +1,11 @@
 This manifest is a fork from Android-x86.org source (git.android-x86.org), branch/tag lollipop-x86
 
-Repo synced 2015-10-10
+Repo synced 2015-10-18. Repositories updated:
+ - external/koush/Superuser
+ - external/llvm
+ - external/mesa
+ - external/ntfs-3g
+ - kernel
 
 To use it:
 
