@@ -1,8 +1,8 @@
 This manifest is a fork from Android-x86.org source (git.android-x86.org), branch/tag lollipop-x86
 
-Repo synced 2015-10-20. Repositories updated:
+Repo synced 2015-10-23. Repositories updated:
  - bootable/newinstaller
- - device/generic/common
+ - system/core
  - external/v86d
 
 To use it:
