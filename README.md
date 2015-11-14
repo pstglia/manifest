@@ -1,7 +1,7 @@
 This manifest is a fork from Android-x86.org source (git.android-x86.org), branch/tag lollipop-x86
 
-Repo synced 2015-11-01. Repositories updated:
- - bootable/newinstaller
+Repo synced 2015-11-14. Repositories updated:
+ - hardware/drm_gralloc
  
 To use it:
 
